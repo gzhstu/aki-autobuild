@@ -1,0 +1,21 @@
+name: Debug
+
+on:
+  # schedule:
+  #   - cron: '0 7 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        run: git clone https://dev.sp-tarkov.com/SPT-AKI/Server.git
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.1
+
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
